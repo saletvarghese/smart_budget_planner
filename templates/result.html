@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow p-4">
+
+<h3 class="text-center mb-4">Budget Result</h3>
+
+<div class="row text-center">
+
+<div class="col-md-4">
+<h5>Income</h5>
+<p class="text-success fw-bold">₹ {{ income }}</p>
+</div>
+
+<div class="col-md-4">
+<h5>Total Expense</h5>
+<p class="text-danger fw-bold">₹ {{ total }}</p>
+</div>
+
+<div class="col-md-4">
+<h5>Balance</h5>
+<p class="text-primary fw-bold">₹ {{ balance }}</p>
+</div>
+
+</div>
+
+<hr>
+
+<!-- Expense Pie Chart -->
+
+<h4 class="text-center mt-4">Expense Distribution</h4>
+
+<div class="text-center">
+<img src="{{ url_for('static', filename='chart.png') }}" class="img-fluid mt-3">
+</div>
+
+<hr>
+
+<!-- Expense Analysis Table -->
+
+<h4 class="mt-4">Expense Analysis</h4>
+
+<table class="table table-bordered table-striped">
+
+<thead class="table-dark">
+
+<tr>
+<th>Category</th>
+<th>Amount</th>
+<th>Percentage</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for row in summary %}
+
+<tr>
+<td>{{ row.Category }}</td>
+<td>₹ {{ row.Amount }}</td>
+<td>{{ "%.2f"|format(row.Percentage) }}%</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+<p class="fw-bold">
+Highest Spending Category: {{ highest }}
+</p>
+
+<hr>
+
+<!-- Smart Budget Insights -->
+
+<h4 class="mt-4">Smart Budget Insights</h4>
+
+<ul class="list-group">
+
+<li class="list-group-item">
+Highest Spending Category: <b>{{ highest }}</b>
+</li>
+
+{% for s in suggestions %}
+
+<li class="list-group-item">
+{{ s }}
+</li>
+
+{% endfor %}
+
+</ul>
+
+<div class="text-center mt-4">
+<a href="/" class="btn btn-primary">Plan Another Budget</a>
+</div>
+
+</div>
+
+{% endblock %}

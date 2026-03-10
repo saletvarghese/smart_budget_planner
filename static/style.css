@@ -1,0 +1,12 @@
+body {
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.navbar {
+    border-radius: 0 0 10px 10px;
+}
