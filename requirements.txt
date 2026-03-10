@@ -1,0 +1,5 @@
+| Library    | Purpose                      |
+| ---------- | ---------------------------- |
+| Flask      | Web application framework    |
+| Pandas     | Data processing and analysis |
+| Matplotlib | Expense visualization        |
